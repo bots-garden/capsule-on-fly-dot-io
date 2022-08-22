@@ -6,4 +6,5 @@ echo "🚀 ${IMAGE_NAME}"
 flyctl deploy \
   --app ${IMAGE_NAME} \
   --image ${DOCKER_USER}/${IMAGE_NAME}:${IMAGE_TAG} \
+  --env MESSAGE="👋 Hello World 🌍" \
   --verbose --json

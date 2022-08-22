@@ -1,4 +1,4 @@
 #!/bin/bash
-MESSAGE="🎉 tada!" ./capsule \
+./capsule \
   -mode=http \
   -wasm=./hello.wasm

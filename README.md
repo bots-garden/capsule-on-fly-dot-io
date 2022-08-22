@@ -33,4 +33,6 @@ cd functions/hello
 cp hello.wasm ../../hello.wasm
 ```
 
-`curl https://capsule-hello-demo.fly.dev`
+```bash
+curl https://capsule-hello-demo.fly.dev
+```
