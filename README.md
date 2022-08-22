@@ -29,5 +29,8 @@ rm capsule-${CAPSULE_VERSION}-${OS}-${ARCH}.tar.gz
 
 ```bash
 cd functions/hello
-./buils
+./build.sh
+cp hello.wasm ../../hello.wasm
 ```
+
+`curl https://capsule-hello-demo.fly.dev`
