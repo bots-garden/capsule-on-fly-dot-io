@@ -1,0 +1,6 @@
+procyon-launcher:
+  url: https://procyon.fly.dev:9043
+  admin-token: ilovepandas
+
+procyon-reverse:
+  url: https://procyon.fly.dev:8043

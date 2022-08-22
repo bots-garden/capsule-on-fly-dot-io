@@ -1,0 +1,11 @@
+{
+  "executors": {
+    "satExecutorPath": "/usr/local/bin/sat"
+  },  
+  "functions": {
+    "wasmFilesDirectory": "./functions"
+  },
+  "http":{
+    "start": 3000
+  }
+}

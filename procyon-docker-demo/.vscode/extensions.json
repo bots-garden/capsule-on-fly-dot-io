@@ -1,0 +1,9 @@
+{
+  "recommendations": [
+    "golang.go",
+    "pkief.material-icon-theme",
+    "grain-lang.vscode-grain",
+    "rust-lang.rust",
+    "TabNine.tabnine-vscode"
+  ]
+}

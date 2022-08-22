@@ -1,0 +1,20 @@
+image: k33g/capsule:0.0.1
+
+tasks:
+  - name: initialize
+    before: |
+      echo "🚀 ..."
+    init: |
+      echo "🚀 ..."
+
+
+ports:
+  - port: 3000-25000
+    visibility: public
+    onOpen: ignore
+
+vscode:
+  extensions:
+    - golang.go
+    - pkief.material-icon-theme
+    - aaron-bond.better-comments

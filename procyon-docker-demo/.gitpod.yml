@@ -1,0 +1,64 @@
+tasks:
+  - name: initialize
+    before: |
+
+      # ------------------------------------
+      # Install Sat (Suborbital)
+      # ------------------------------------
+      git clone --depth=1 https://github.com/suborbital/sat.git
+      cd sat
+      go build -o .bin/sat -tags netgo,wasmtime .
+      sudo cp .bin/sat /usr/local/bin/sat
+      cd ..
+      rm -rf sat
+
+      # ------------------------------------
+      # Install the Suborbital CLI
+      # ------------------------------------
+      brew tap suborbital/subo
+      brew install subo
+
+      # ------------------------------------
+      # Install TinyGo
+      # ------------------------------------
+      TINYGO_VERSION="0.21.0"
+      wget https://github.com/tinygo-org/tinygo/releases/download/v${TINYGO_VERSION}/tinygo_${TINYGO_VERSION}_amd64.deb
+      sudo dpkg -i tinygo_${TINYGO_VERSION}_amd64.deb
+      rm tinygo_${TINYGO_VERSION}_amd64.deb
+
+      # ------------------------------------
+      # Install tools
+      # ------------------------------------
+      brew install httpie
+      brew install hey
+      brew install bat
+      brew install exa
+
+      # ------------------------------------
+      # Wasmer
+      # ------------------------------------
+      sudo apt install libncurses5 libxkbcommon0 libtinfo5 libnss3-tools -y
+      curl https://get.wasmer.io -sSfL | sh 
+      source /home/gitpod/.wasmer/wasmer.sh
+
+    init: |
+
+      # ------------------------------------
+      # 🚀 Ignition
+      # ------------------------------------
+      echo "🎉 ready to discover Procyon 😃"
+
+
+ports:
+  # Procyon reverse proxy 
+  - port: 8080
+    visibility: public
+ # Procyon
+  - port: 9090
+    visibility: public
+
+vscode:
+  extensions:
+    - pkief.material-icon-theme
+    - golang.go
+    - rust-lang.rust
