@@ -2,45 +2,24 @@ package main
 
 import (
 	hf "github.com/bots-garden/capsule/capsulemodule/hostfunctions"
+	"github.com/tidwall/gjson"
+	"github.com/tidwall/sjson"
 )
 
 func main() {
 	hf.SetHandleHttp(Handle)
 }
 
-func Handle(bodyReq string, headersReq map[string]string) (bodyResp string, headersResp map[string]string, errResp error) {
-	message, _ := hf.GetEnv("MESSAGE")
-	html := `
-    <html>
-			<head>
-				<meta charset="utf-8">
-				<title>Wasm is fantastic 😍</title>
+func Handle(request hf.Request) (response hf.Response, errResp error) {
 
-				<meta name="viewport" content="width=device-width, initial-scale=1">
-				
-				<style>
-					.container { min-height: 100vh; display: flex; justify-content: center; align-items: center; text-align: center; }
-					.title { font-family: "Source Sans Pro", "Helvetica Neue", Arial, sans-serif; display: block; font-weight: 300; font-size: 100px; color: #35495e; letter-spacing: 1px; }
-					.subtitle { font-family: "Source Sans Pro", "Helvetica Neue", Arial, sans-serif; font-weight: 300; font-size: 42px; color: #526488; word-spacing: 5px; padding-bottom: 15px; }
-				</style>
+	name := gjson.Get(request.Body, "name")
 
-			</head>
-
-			<body>
-				<section class="container">
-					<div>
-						<h1 class="title">` + message + `</h1>
-						<h2 class="subtitle">Served with 💜 by Capsule 💊</h2>
-					</div>
-				</section>
-			</body>
-
-    </html>
-    `
-
-	headersResp = map[string]string{
-		"Content-Type": "text/html; charset=utf-8",
+	headersResp := map[string]string{
+		"Content-Type": "application/json; charset=utf-8",
 	}
 
-	return html, headersResp, nil
+	jsondoc := `{"message": ""}`
+	jsondoc, _ = sjson.Set(jsondoc, "message", "👋 hello " + name.Str)
+
+	return hf.Response{Body: jsondoc, Headers: headersResp}, nil
 }

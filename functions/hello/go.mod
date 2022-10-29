@@ -2,6 +2,14 @@ module hello
 
 go 1.18
 
-require github.com/bots-garden/capsule/capsulemodule v0.0.0-20220821063800-09667c0e1624
+require (
+	github.com/bots-garden/capsule/capsulemodule v0.2.9
+	github.com/tidwall/gjson v1.14.3
+	github.com/tidwall/sjson v1.2.5
+)
 
-require github.com/bots-garden/capsule/commons v0.0.0-20220821060842-d1dc9f030021 // indirect
+require (
+	github.com/bots-garden/capsule/commons v0.2.9 // indirect
+	github.com/tidwall/match v1.1.1 // indirect
+	github.com/tidwall/pretty v1.2.0 // indirect
+)

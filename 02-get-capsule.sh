@@ -1,8 +1,4 @@
 #!/bin/bash
-CAPSULE_VERSION="0.1.6"
-OS="linux"
-ARCH="amd64"
 echo "💊 Installing the capsule launcher..."
-wget https://github.com/bots-garden/capsule/releases/download/${CAPSULE_VERSION}/capsule-${CAPSULE_VERSION}-${OS}-${ARCH}.tar.gz
-sudo tar -zxf capsule-${CAPSULE_VERSION}-${OS}-${ARCH}.tar.gz
-rm capsule-${CAPSULE_VERSION}-${OS}-${ARCH}.tar.gz
+export CAPSULE_VERSION="v0.2.9"
+wget -O - https://raw.githubusercontent.com/bots-garden/capsule/${CAPSULE_VERSION}/install-capsule-launcher.sh| bash
